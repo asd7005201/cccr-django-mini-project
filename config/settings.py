@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'photo',
+    'accounts',
+    'django.contrib.sites',
+    'disqus',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/res/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+LOGIN_REDIRECT_URL ='/' 
+
+DISQUS_WEBSITE_SHORTNAME = 'cccrinstagram'
+SITE_ID = 1

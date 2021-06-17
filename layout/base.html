@@ -8,7 +8,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">SSgram</a>
+        <a class="navbar-brand" href="#">Astagram</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,9 +17,19 @@
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'photo:index' %}">Home</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'photo:create' %}">사진 업로드</a>
+            <a class="nav-link" href="{% url 'photo:create' %}">Upload</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'accounts:logout' %}">Logout<span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">Login<span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+
         </ul>
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -28,6 +38,21 @@
         </div>
     </div>
 </nav>
+
+<div class='container'>
+    {% if messages %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            {% for message in messages %}
+            <div class="alert alert-{{message.tag}}">{{message}</div>
+            {% endfor %}
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+    {% endif %}
+    
 {% block content %}
 {% endblock %}
 

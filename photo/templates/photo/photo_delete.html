@@ -2,10 +2,10 @@
 {% block content %}
 
 <div class="alert alert-primary" role="alert">
-    진짜로 {{object}}를 지우실 건가요?
+    정말 {{object}}를 삭제 하시겠습니까?
 </div>
 <form action="" method="post">
     {% csrf_token%}
-    <input type="submit" vlaue="Delete OK">
+    <input type="submit" value="Delete OK">
 </form>
 {% endblock %}
